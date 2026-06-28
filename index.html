@@ -664,10 +664,168 @@
                 font-size: 1.3rem;
             }
         }
+    /* ========= Модальное окно портфолио =========== */
+    .modal-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.85);
+        z-index: 9999;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        opacity: 0;
+        transition: opacity 0.4s ease;
+    }
+
+    .modal-overlay.active {
+        display: flex;
+        opacity: 1;
+    }
+
+    .modal-content {
+        background: #fff;
+        max-width: 900px;
+        width: 100%;
+        max-height: 90vh;
+        border-radius: 8px;
+        overflow-y: auto;
+        position: relative;
+        padding: 40px 40px 30px;
+        transform: scale(0.9);
+        transition: transform 0.3s ease;
+    }
+
+    .modal-overlay.active .modal-content {
+        transform: scale(1);
+    }
+
+    .modal-close {
+        position: absolute;
+        top: 16px;
+        right: 20px;
+        font-size: 32px;
+        line-height: 1;
+        background: none;
+        border: none;
+        cursor: pointer;
+        color: #999;
+        transition: color 0.2s;
+        padding: 0 8px;
+    }
+
+    .modal-close:hover {
+        color: #333;
+    }
+
+    .modal-title {
+        font-family: var(--font-serif);
+        font-size: 1.8rem;
+        margin-bottom: 8px;
+        padding-right: 40px;
+    }
+
+    .modal-subtitle {
+    color: var(--color-accent);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 20px;
+}
+
+.modal-gallery {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 20px 0;
+}
+
+.modal-gallery img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.modal-gallery img:hover {
+    transform: scale(1.02);
+}
+
+.modal-gallery .full-width {
+    grid-column: 1 / -1;
+    height: 300px;
+}
+
+.modal-description {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #444;
+    margin: 16px 0;
+}
+
+.modal-details {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px 40px;
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid var(--color-border);
+    font-size: 0.9rem;
+}
+
+.modal-details span {
+    color: #666;
+}
+
+.modal-details strong {
+    color: var(--color-text);
+    font-weight: 400;
+}
+
+/* Адаптив для модалки */
+@media (max-width: 768px) {
+    .modal-content {
+        padding: 24px 20px;
+        max-height: 95vh;
+    }
+    .modal-gallery {
+        grid-template-columns: 1fr;
+    }
+    .modal-gallery .full-width {
+        height: 220px;
+    }
+    .modal-title {
+        font-size: 1.4rem;
+    }
+}
     </style>
 </head>
 <body>
-
+    <!-- ===== МОДАЛЬНОЕ ОКНО ПОРТФОЛИО ===== -->
+    <div class="modal-overlay" id="portfolioModal">
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose">×</button>
+            <h2 class="modal-title" id="modalTitle">Название проекта</h2>
+            <div class="modal-subtitle" id="modalSubtitle">Тип проекта</div>
+            
+            <div class="modal-gallery" id="modalGallery">
+                <!-- Фото подставятся через JavaScript -->
+            </div>
+            
+            <p class="modal-description" id="modalDescription">Описание проекта...</p>
+            
+            <div class="modal-details" id="modalDetails">
+                <span><strong>Год:</strong> <span id="modalYear">2024</span></span>
+                <span><strong>Площадь:</strong> <span id="modalArea">65 м²</span></span>
+                <span><strong>Работы:</strong> <span id="modalWorks">Дизайн-проект, авторский надзор</span></span>
+            </div>
+        </div>
+    </div>
     <!-- ===================== ШАПКА ===================== -->
     <header class="header" id="header">
         <div class="container">
@@ -761,34 +919,16 @@
 
         <!-- ===================== ПОРТФОЛИО ===================== -->
         <section class="section" id="portfolio">
-            <div class="container">
-                <div class="section-header">
-                    <div class="section-subtitle">Реализованные проекты</div>
-                    <h2>Портфолио</h2>
-                </div>
-                <div class="portfolio-grid">
-                    <!-- Замените ссылки на реальные изображения проектов -->
-                    <div class="portfolio-item" style="background-image: url('images/portfolio/main-room.jpg'); background-size: cover; background-position: center;">
-                        <span>Гостиная, Кемерово</span>
-                    </div>
-                    <div class="portfolio-item" style="background-image: url('images/portfolio/child-room.jpg'); background-size: cover; background-position: center;">
-                        <span>Детская, Новосибирск</span>
-                    </div>
-                    <div class="portfolio-item" style="background-image: url('images/portfolio/kitchen.jpg'); background-size: cover; background-position: center;">
-                        <span>Кухня-гостиная, Москва</span>
-                    </div>
-                    <div class="portfolio-item" style="background-image: url('images/portfolio/cabinet.jpg'); background-size: cover; background-position: center;">
-                        <span>Кабинет, Томск</span>
-                    </div>
-                    <div class="portfolio-item" style="background-image: url('images/portfolio/cantry-house.jpg'); background-size: cover; background-position: center;">
-                        <span>Загородный дом, Берлин</span>
-                    </div>
-                    <div class="portfolio-item" style="background-image: url('images/portfolio/vine-room.jpg'); background-size: cover; background-position: center;">
-                        <span>Винный погреб, Краснодар</span>
-                    </div>
-                </div>
-            </div>
-        </section>
+    <div class="container">
+        <div class="section-header">
+            <div class="section-subtitle">Реализованные проекты</div>
+            <h2>Портфолио</h2>
+        </div>
+        <div class="portfolio-grid" id="portfolioGrid">
+            <!-- Карточки будут генерироваться через JavaScript -->
+        </div>
+    </div>
+</section>
 
         <!-- ===================== ОТЗЫВЫ ===================== -->
         <section class="section" id="reviews">
@@ -933,6 +1073,190 @@
 
         })();
     </script>
+    <script>
+    (function() {
+        'use strict';
 
+        // ===== ДАННЫЕ ПРОЕКТОВ (редактируйте здесь) =====
+        const projects = [{
+            id: 1,
+            title: 'Гостиная в Кемерово',
+            type: 'Жилой интерьер',
+            year: '2025',
+            area: '72 м²',
+            works: 'Дизайн-проект, подбор материалов, авторский надзор',
+            description: 'Современная гостиная с элементами скандинавского стиля. Заказчик хотел светлое пространство с акцентами из натурального дерева. Мы разработали открытую планировку, зонировали пространство с помощью света и текстиля.',
+            cover: 'images/portfolio/main-room.jpg',
+            images: [
+                'images/portfolio/blank.jpg',
+                'images/portfolio/blank.jpg',
+                'images/portfolio/blank.jpg'
+            ]
+        }, {
+            id: 2,
+            title: 'Детская комната, Новосибирск',
+            type: 'Детский интерьер',
+            year: '2024',
+            area: '34 м²',
+            works: 'Дизайн-проект, 3D-визуализация, комплектация',
+            description: 'Создали игровое и учебное пространство для двух детей. Основная задача — максимально эффективно использовать площадь. Сделали более 40 визуализаций, чтобы учесть все пожелания заказчиков.',
+            cover: 'images/portfolio/child-room.jpg',
+            images: [
+                'images/portfolio/blank.jpg',
+                'images/portfolio/blank.jpg',
+                'images/portfolio/blank.jpg'
+            ]
+        }, {
+            id: 3,
+            title: 'Кухня-гостиная, Москва',
+            type: 'Открытое пространство',
+            year: '2024',
+            area: '45 м²',
+            works: 'Перепланировка, дизайн-проект, авторский надзор',
+            description: 'Объединили кухню и гостиную в одно светлое пространство. Установили остров с барной стойкой, продумали систему хранения. Использовали материалы с оптимальным соотношением цена/качество.',
+            cover: 'images/portfolio/kitchen.jpg',
+            images: [
+                'images/portfolio/blank.jpg',
+                'images/portfolio/blank.jpg',
+                'images/portfolio/blank.jpg'
+            ]
+        }, {
+            id: 4,
+            title: 'Кабинет в Томске',
+            type: 'Рабочее пространство',
+            year: '2024',
+            area: '28 м²',
+            works: 'Дизайн-проект, авторский надзор, комплектация',
+            description: 'Продуманное рабочее пространство с зоной отдыха. Использовали тёмные оттенки для концентрации, добавили акцентное освещение. Заказчик отмечает: "Теперь это лучшее место в квартире".',
+            cover: 'images/portfolio/cabinet.jpg',
+            images: [
+                'images/portfolio/blank.jpg',
+                'images/portfolio/blank.jpg',
+                'images/portfolio/blank.jpg'
+            ]
+        }, {
+            id: 5,
+            title: 'Загородный дом, Берлин',
+            type: 'Архитектурный проект',
+            year: '2023',
+            area: '180 м²',
+            works: 'Архитектурное проектирование, дизайн интерьеров, надзор',
+            description: 'Проект загородного дома с панорамным остеклением. Сочетали современную архитектуру с экологичными материалами. Разработали уникальные лестницы и систему освещения.',
+            cover: 'images/portfolio/cantry-house.jpg',
+            images: [
+                'images/portfolio/blank.jpg',
+                'images/portfolio/blank.jpg',
+                'images/portfolio/blank.jpg'
+            ]
+        }, {
+            id: 6,
+            title: 'Винный погреб, Краснодар',
+            type: 'Интерьер особого назначения',
+            year: '2024',
+            area: '22 м²',
+            works: 'Дизайн-проект, подбор материалов, авторский надзор',
+            description: 'Создали атмосферное пространство для хранения и дегустации вин. Использовали натуральный камень, тёплое освещение и продуманную систему климат-контроля.',
+            cover: 'images/portfolio/vine-room.jpg',
+            images: [
+                'images/portfolio/blank.jpg',
+                'images/portfolio/blank.jpg',
+                'images/portfolio/blank.jpg'
+            ]
+        }];
+
+        // ===== ОТРИСОВКА КАРТОЧЕК =====
+        const grid = document.getElementById('portfolioGrid');
+
+        projects.forEach(project => {
+            const card = document.createElement('div');
+            card.className = 'portfolio-item';
+            card.style.backgroundImage = `url('${project.cover}')`;
+            card.style.backgroundSize = 'cover';
+            card.style.backgroundPosition = 'center';
+            card.innerHTML = `<span>${project.title}</span>`;
+            card.style.cursor = 'pointer';
+            
+            card.addEventListener('click', function() {
+                openModal(project.id);
+            });
+            
+            grid.appendChild(card);
+        });
+
+        // ===== МОДАЛЬНОЕ ОКНО =====
+        const modal = document.getElementById('portfolioModal');
+        const closeBtn = document.getElementById('modalClose');
+
+        function openModal(id) {
+            const project = projects.find(p => p.id === id);
+            if (!project) return;
+
+            // Заполняем данные
+            document.getElementById('modalTitle').textContent = project.title;
+            document.getElementById('modalSubtitle').textContent = project.type;
+            document.getElementById('modalDescription').textContent = project.description;
+            document.getElementById('modalYear').textContent = project.year;
+            document.getElementById('modalArea').textContent = project.area;
+            document.getElementById('modalWorks').textContent = project.works;
+
+            // Генерируем галерею
+            const gallery = document.getElementById('modalGallery');
+            gallery.innerHTML = '';
+            
+            project.images.forEach((img, index) => {
+                const imgEl = document.createElement('img');
+                imgEl.src = img;
+                imgEl.alt = `${project.title} - фото ${index + 1}`;
+                if (index === 0) {
+                    imgEl.classList.add('full-width');
+                }
+                // Клик по фото открывает в новой вкладке (можно убрать)
+                imgEl.addEventListener('click', function() {
+                    window.open(this.src, '_blank');
+                });
+                gallery.appendChild(imgEl);
+            });
+
+            // Показываем модалку с анимацией
+            modal.style.display = 'flex';
+            // Небольшая задержка для запуска transition
+            requestAnimationFrame(() => {
+                modal.classList.add('active');
+            });
+            
+            // Блокируем скролл страницы
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            modal.classList.remove('active');
+            setTimeout(() => {
+                modal.style.display = 'none';
+                document.body.style.overflow = '';
+            }, 300);
+        }
+
+        // Закрытие по кнопке
+        closeBtn.addEventListener('click', closeModal);
+
+        // Закрытие по клику на фон
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+
+        // Закрытие по Escape
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && modal.classList.contains('active')) {
+                closeModal();
+            }
+        });
+
+        // ===== ОСТАЛЬНЫЕ СКРИПТЫ (бургер, скролл и т.д.) =====
+        // ... (здесь остаётся ваш существующий код для бургера, подсветки и т.д.)
+
+    })();
+</script>
 </body>
 </html>
