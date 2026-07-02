@@ -1,0 +1,54 @@
+/* ========================================
+   HERO-БЛОК
+   ======================================== */
+
+.hero {
+    padding: 60px 0 80px;
+    background: var(--color-light-gray);
+}
+
+.hero .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.hero-content h1 {
+    font-size: clamp(2.8rem, 6vw, 4.5rem);
+    line-height: 1.1;
+    margin-bottom: 0.5rem;
+}
+
+.hero-content .subhead {
+    font-size: 1.2rem;
+    font-weight: 300;
+    color: #555;
+    margin-bottom: 1.5rem;
+    font-family: var(--font-serif);
+    font-style: italic;
+}
+
+.hero-content p {
+    font-size: 1rem;
+    max-width: 440px;
+    margin-bottom: 2rem;
+    color: #3a3a3a;
+}
+
+.hero-image {
+    background: var(--color-accent-light);
+    aspect-ratio: 4/3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 4px;
+}

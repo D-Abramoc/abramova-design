@@ -1,0 +1,27 @@
+/* ========================================
+   ПЕРЕМЕННЫЕ
+   ======================================== */
+
+:root {
+    /* Основные цвета */
+    --color-bg: #ffffff;
+    --color-text: #1a1a1a;
+    --color-accent: #b8a28c;
+    --color-accent-light: #e8dfd6;
+    --color-light-gray: #f7f5f2;
+    --color-border: #e0dbd5;
+    
+    /* Шрифты */
+    --font-sans: 'Inter', sans-serif;
+    --font-serif: 'Playfair Display', serif;
+    
+    /* Переходы */
+    --transition: 0.3s ease;
+    
+    /* Размеры */
+    --container-width: 1200px;
+    
+    /* Тени */
+    --shadow-sm: 0 2px 12px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.03);
+}

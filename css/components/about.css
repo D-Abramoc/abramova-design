@@ -1,0 +1,67 @@
+/* ========================================
+   О ДИЗАЙНЕРЕ
+   ======================================== */
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.about-image {
+    background: var(--color-accent-light);
+    aspect-ratio: 3/4;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.about-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.about-image img:hover {
+    transform: scale(1.02);
+}
+
+.about-text h2 {
+    margin-bottom: 1rem;
+}
+
+.about-text h2::after {
+    left: 0;
+    transform: none;
+}
+
+.about-text p {
+    margin-bottom: 1.2rem;
+    color: #3a3a3a;
+}
+
+.about-text .highlight {
+    color: var(--color-accent);
+    font-weight: 400;
+}
+
+.about-text ul {
+    list-style: none;
+    margin: 1.5rem 0;
+}
+
+.about-text ul li {
+    padding: 6px 0;
+    padding-left: 28px;
+    position: relative;
+    font-size: 0.95rem;
+}
+
+.about-text ul li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--color-accent);
+}

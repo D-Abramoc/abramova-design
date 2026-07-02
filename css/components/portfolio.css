@@ -1,0 +1,47 @@
+/* ========================================
+   ПОРТФОЛИО
+   ======================================== */
+
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.portfolio-item {
+    background: var(--color-light-gray);
+    aspect-ratio: 4/3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    font-family: var(--font-serif);
+    color: #8a7a6a;
+    font-size: 0.9rem;
+    transition: var(--transition);
+    border: 1px solid transparent;
+    background-repeat: no-repeat;
+    background-position: center 30%;
+    background-size: 40px;
+    padding-top: 50px;
+    cursor: pointer;
+}
+
+.portfolio-item:hover {
+    border-color: var(--color-accent);
+    transform: translateY(-4px);
+}
+
+.portfolio-item span {
+    margin-top: auto;
+    padding: 16px;
+    background: rgba(255,255,255,0.85);
+    width: 100%;
+    text-align: center;
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #555;
+}
